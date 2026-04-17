@@ -95,11 +95,12 @@ if st.button("🚀 Predict"):
     # -------------------------
     # SAVE TO MYSQL
     # -------------------------
-    cursor = conn.cursor()
-    cursor.execute("""
-        INSERT INTO heart_predictions 
-        (age, sex, cp, trestbps, chol, prediction)
-        VALUES (%s, %s, %s, %s, %s, %s)
-    """, (age, sex, cp, trestbps, chol, int(prediction[0])))
-
-    conn.commit()
+    data = {
+        "age": age,
+        "sex": sex,
+        "cp": cp,
+        "trestbps": trestbps,
+        "chol": chol
+    }
+    
+    save_prediction(data, int(prediction[0]))
