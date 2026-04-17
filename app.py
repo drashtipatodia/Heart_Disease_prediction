@@ -1,7 +1,7 @@
 import streamlit as st
 import numpy as np
 import pickle
-import mysql.connector
+from db import save_prediction
 
 # -------------------------
 # PAGE CONFIG
@@ -37,18 +37,7 @@ input, div[data-baseweb="select"] > div {
 """, unsafe_allow_html=True)
 
 # -------------------------
-# MYSQL CONNECTION
-# -------------------------
-def connect_db():
-    return mysql.connector.connect(
-        host=st.secrets["MYSQLHOST"],
-        user=st.secrets["MYSQLUSER"],
-        password=st.secrets["MYSQLPASSWORD"],
-        database=st.secrets["MYSQLDATABASE"],
-        port=int(st.secrets["MYSQLPORT"])
-    )
 
-conn = connect_db()
 
 # -------------------------
 # LOAD MODEL
