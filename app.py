@@ -42,7 +42,8 @@ input, div[data-baseweb="select"] > div {
 # -------------------------
 # LOAD MODEL
 # -------------------------
-model = pickle.load(open('model.pkl', 'rb'))
+with open("model.pkl", "rb") as f:
+    model = pickle.load(f)
 
 # -------------------------
 # TITLE
