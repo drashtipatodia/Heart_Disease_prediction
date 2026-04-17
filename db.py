@@ -1,12 +1,14 @@
 import mysql.connector
-
+import streamlit as st
+# MYSQL CONNECTION
+# -------------------------
 def connect_db():
     return mysql.connector.connect(
-        host="localhost",
-        user="app_user",   # better than root
-        password="paa",
-        database="churn_db",
-        port=3306
+        host=st.secrets["MYSQLHOST"],
+        user=st.secrets["MYSQLUSER"],
+        password=st.secrets["MYSQLPASSWORD"],
+        database=st.secrets["MYSQLDATABASE"],
+        port=int(st.secrets["MYSQLPORT"])
     )
 
 def save_prediction(data, pred):
